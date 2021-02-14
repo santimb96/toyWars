@@ -55,7 +55,10 @@ public class Pokemon extends LifeBeing{
         this.pokemonDNI = pokemonDNI;//EN EL SET APARECE EL ARRAY QUE LE PASO
     }
     public List<String> getPokemonDNI() {
-        return new ArrayList<>(pokemonDNI);//NO ME OBTINE EL GET DEL pokemonDNI
+        String pokemon="";
+        for (int i = 0; i < pokemonDNI.size(); i++) {
+            pokemon += String.valueOf(pokemonDNI.get(i));
+        }//NO ME OBTINE EL GET DEL pokemonDNI
     }
 //MÉTODOS DE LA INTERFACE (ACCIONES ENUM EAT, SLEEP Y PLAY
     @Override
