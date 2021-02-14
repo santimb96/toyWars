@@ -1,4 +1,5 @@
 package org.toyWars;
 
-public enum Actions {
+public enum Actions{
+    EAT,SLEEP,PLAY,RUN,ATACK;
 }
