@@ -1,32 +1,16 @@
 package org.toyWars;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserAction {
-    private Pokemon pokemon;
-    private int initialPoints;
-    private int finalPoints;
+    List<List> currentStatus = new ArrayList<List>();
 
-    public Pokemon getPokemon() {
-        return pokemon;
+    public List<List> getCurrentStatus() {
+        return currentStatus;
     }
 
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon = pokemon;
+    public void setCurrentStatus(List<List> currentStatus) {
+        this.currentStatus = currentStatus;
     }
-
-    public int getInitialPoints() {
-        return initialPoints;
-    }
-
-    public void setInitialPoints(int initialPoints) {
-        this.initialPoints = initialPoints;
-    }
-
-    public int getFinalPoints() {
-        return finalPoints;
-    }
-
-    public void setFinalPoints(int finalPoints) {
-        this.finalPoints = finalPoints;
-    }
-
 }

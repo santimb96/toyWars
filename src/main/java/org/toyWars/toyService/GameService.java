@@ -3,8 +3,12 @@ package org.toyWars.toyService;
 import org.springframework.stereotype.Service;
 import org.toyWars.*;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.toyWars.Actions.*;
 
 @Service
 public class GameService{
@@ -48,7 +52,21 @@ public class GameService{
         pokemonAtr.add(pokemon.getColor());
         pokemon.setPokemonDNI(pokemonAtr);
     }
-    public void doActions (IActions action){
+    public void doActions (Action action){
+
+            switch (action) {
+                case EAT:
+                    System.out.println("Mondays are bad.");
+                    break;
+
+                case SLEEP:
+                    System.out.println("Fridays are better.");
+                    break;
+
+                default:
+                    System.out.println("Midweek days are so-so.");
+                    break;
+            }
     }
     public void resetLifeBeing(){
     }
