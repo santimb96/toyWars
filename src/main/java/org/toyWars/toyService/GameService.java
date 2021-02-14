@@ -14,6 +14,8 @@ import static org.toyWars.Actions.*;
 public class GameService{
     private List <UserAction> userAction;
     private int maxPoints;
+    private Action action;
+    private RenderType renderType;
     //INSTANCIA DE INTERACCIÓN DEL USUARIO
     private String currentLifeBeing;
 
@@ -40,6 +42,7 @@ public class GameService{
     public void setCurrentLifeBeing(String currentLifeBeing) {
         this.currentLifeBeing = currentLifeBeing;
     }
+
     /////MÉTODOS
     public void initPokemon(String fullName, String type, String color){
         Pokemon pokemon=new Pokemon();
@@ -52,21 +55,23 @@ public class GameService{
         pokemonAtr.add(pokemon.getColor());
         pokemon.setPokemonDNI(pokemonAtr);
     }
-    public void doActions (Action action){
-
-            switch (action) {
+    public void doActions (){
+        Pokemon pokemon=new Pokemon();
+        Actions[] currentAction = Actions.values();
+        for (int i = 0; i < currentAction.length; i++) {
+            switch (currentAction[i]) {
                 case EAT:
-                    System.out.println("Mondays are bad.");
+                    pokemon.doEat();
                     break;
-
                 case SLEEP:
-                    System.out.println("Fridays are better.");
+                    pokemon.doSleep();
                     break;
-
                 default:
-                    System.out.println("Midweek days are so-so.");
+                    pokemon.doPlay();
                     break;
             }
+        }
+
     }
     public void resetLifeBeing(){
     }
