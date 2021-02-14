@@ -34,16 +34,15 @@ import java.util.ArrayList;
         public String getName(@RequestParam(value = "name", defaultValue = "Pika") String name) {
         return name;
         }
-/*
-        @GetMapping("/new")
-        public Team getTeam(@RequestParam(value = "name", defaultValue = "Quijote") String name,
-                            @RequestParam(value = "q", defaultValue = "12") Integer numPlayers) {
-            Team team = new Team();
-            team.setName(name);
-            team.setPlayerList(CompetitionHelper.getRandomPlayers(numPlayers, name, ""));
-            return team;
-        }
 
+        @GetMapping("/new")
+        public Pokemon getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
+                               @RequestParam(value = "type", defaultValue = "Electric") String type,
+                               @RequestParam(value = "color", defaultValue = "yellow") String color) {
+            Pokemon pokemon = new Pokemon();
+            return (Pokemon) pokemon.getPokemonDNI();
+        }
+/*
 
         @GetMapping("/render")
         public Account getTeam(@RequestParam(value = "names", defaultValue = "Pepito,Juanito") String names,
