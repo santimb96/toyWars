@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.toyWars.Pokemon;
+import org.toyWars.toyService.GameService;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,8 @@ import java.util.ArrayList;
         public ArrayList<Pokemon> getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
                                              @RequestParam(value = "type", defaultValue = "Electric") String type,
                                              @RequestParam(value = "color", defaultValue = "yellow") String color) {
+            GameService gameService = new GameService();
+            gameService.initPokemon("Charmander", "fire", "red");
             Pokemon pokemon = new Pokemon();
             return Pokemon.getPokemonAttribute();
         }

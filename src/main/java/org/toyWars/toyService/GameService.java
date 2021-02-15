@@ -46,12 +46,12 @@ public class GameService{
     /////MÉTODOS
     public void initPokemon(String fullName, String type, String color){
         Pokemon pokemon=new Pokemon();
-        ArrayList<Pokemon> pokemonAtr = new ArrayList<>();
+        //ArrayList<Pokemon> pokemonAtr = new ArrayList<>();
         pokemon.setName(fullName);
         pokemon.setType(type);
         pokemon.setColor(color);
-        pokemonAtr.add(pokemon);
-        Pokemon.setPokemonAttribute(pokemonAtr);
+        //Pokemon.setPokemonAttribute(pokemon);
+        Pokemon.pokemonAttribute.add(pokemon);
     }
     public void doActions (){
         Pokemon pokemon=new Pokemon();
