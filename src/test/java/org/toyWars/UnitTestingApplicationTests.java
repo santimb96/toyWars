@@ -23,7 +23,7 @@ class UnitTestingApplicationTests {
         Pokemon pokemon=new Pokemon();
         GameService gameService=new GameService();
         gameService.initPokemon("Charizard", "fire", "red");
-        Assertions.assertEquals(Arrays.asList("Charizard", "fire", "red"), pokemon.getPokemonDNI());
+        Assertions.assertEquals(Arrays.asList("Charizard", "fire", "red"), Pokemon.getPokemonAttribute());
     }
 
 }

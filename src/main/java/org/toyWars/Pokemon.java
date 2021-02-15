@@ -8,7 +8,8 @@ public class Pokemon extends LifeBeing{
     //tipo (planta, fuego...)
     private String type;
     private String color;
-    private List<String> pokemonDNI = new ArrayList<String>();
+
+    public static ArrayList<Pokemon> pokemonAttribute = new ArrayList<>();
 
     public Pokemon(String name, String type, String color){
         this.name=name;
@@ -51,15 +52,15 @@ public class Pokemon extends LifeBeing{
     public void setColor(String color) {
         this.color = color;
     }
-    public void setPokemonDNI(List<String> pokemonDNI) {
-        this.pokemonDNI = pokemonDNI;//EN EL SET APARECE EL ARRAY QUE LE PASO
+
+    public static ArrayList<Pokemon> getPokemonAttribute() {
+        return pokemonAttribute;
     }
-    public List<String> getPokemonDNI() {
-        String pokemon="";
-        for (int i = 0; i < pokemonDNI.size(); i++) {
-            pokemon += String.valueOf(pokemonDNI.get(i));
-        }//NO ME OBTINE EL GET DEL pokemonDNI
+
+    public static void setPokemonAttribute(ArrayList<Pokemon> pokemonAttribute) {
+        Pokemon.pokemonAttribute = pokemonAttribute;
     }
+
 //MÉTODOS DE LA INTERFACE (ACCIONES ENUM EAT, SLEEP Y PLAY
     @Override
     public void doEat() {

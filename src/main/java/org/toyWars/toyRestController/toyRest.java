@@ -1,14 +1,8 @@
 package org.toyWars.toyRestController;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.toyWars.IActions;
 import org.toyWars.Pokemon;
 
 import java.util.ArrayList;
@@ -36,11 +30,11 @@ import java.util.ArrayList;
         }
 
         @GetMapping("/new")
-        public Pokemon getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
-                               @RequestParam(value = "type", defaultValue = "Electric") String type,
-                               @RequestParam(value = "color", defaultValue = "yellow") String color) {
+        public ArrayList<Pokemon> getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
+                                             @RequestParam(value = "type", defaultValue = "Electric") String type,
+                                             @RequestParam(value = "color", defaultValue = "yellow") String color) {
             Pokemon pokemon = new Pokemon();
-            return (Pokemon) pokemon.getPokemonDNI();
+            return Pokemon.getPokemonAttribute();
         }
 /*
 
