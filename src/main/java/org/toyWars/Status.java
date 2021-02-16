@@ -7,7 +7,7 @@ public class Status {
     private int hungryPoints=50;
     private int energyPoints=50;
     private int healthyPoints=50;
-    private String easyStatus;
+    private String easyStat;
     private static ArrayList <Status> status = new ArrayList<>();
 
     public int getHungryPoints() {
@@ -52,18 +52,18 @@ public class Status {
     }
 public String getEasyStatus(){
     int avgPoints = this.getAvgPoints();
-    String easyStat="";
+    String easyStat;
     if (avgPoints<25){
-        easyStat+= "Bad";
+        easyStat = "Bad";
     }
     else if (avgPoints>25 && avgPoints<50){
-        easyStat += "Not bad";
+        easyStat = "Not bad";
     }
     else if(avgPoints>=50 && avgPoints<65){
-        easyStat += "Good";
+        easyStat = "Good";
     }
     else{
-        easyStat += "Excellent";
+        easyStat = "Excellent";
     }
     return easyStat;
     }
