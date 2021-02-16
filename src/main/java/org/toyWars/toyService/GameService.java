@@ -51,10 +51,11 @@ public class GameService{
         pokemon.setType(type);
         pokemon.setColor(color);
         //Pokemon.setPokemonAttribute(pokemon);
-        Pokemon.pokemonAttribute.add(pokemon);
+        Pokemon.getPokemonAttribute().add(pokemon);
     }
     public String doActions (Actions actions){
         String response="";
+        Status status=new Status();
         Pokemon pokemon=new Pokemon();
             switch (actions) {
                 case EAT:

@@ -53,13 +53,13 @@ import java.util.ArrayList;
             Account account = BankOperationsHelper.initAccount(bank, cash, clientNames);
             return account;
         }*/
-        @GetMapping("/do/{Action}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE")
+        /*@GetMapping("/do/{Action}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE")
         public String doAction(@PathVariable ("Action") String action) {
             GameService gameService=new GameService();
             String actionUpper = action.toUpperCase(); //importante pasar a upper case!
             Actions actions=Actions.valueOf(actionUpper);//pasamos de string a enum
             gameService.doActions(actions);
-            return response;
+            return doAction();
         }
         /*
         @GetMapping("/getCurrentStatus")

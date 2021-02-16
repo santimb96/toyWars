@@ -28,7 +28,7 @@ public class PossibleActions extends LifeBeing{
 
     }
     //SEGÚN ENUNCIADO, OBTENEMOS UN STATUS (LOS PUNTOS DE CLASE STATUS¿?)
-    public Integer Status(Status status){
+    /*public Integer Status(Status status){
         return status.getHappyPoints();
-    }
+    }*/
 }

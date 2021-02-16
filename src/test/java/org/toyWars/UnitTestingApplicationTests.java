@@ -24,7 +24,14 @@ class UnitTestingApplicationTests {
         Pokemon pokemon=new Pokemon();
         GameService gameService=new GameService();
         gameService.initPokemon("Charizard", "fire", "red");
-        Assertions.assertArrayEquals(Pokemon.pokemonAttribute.toArray(), Pokemon.getPokemonAttribute().toArray(new Pokemon[0]));
+        Assertions.assertArrayEquals(Pokemon.getPokemonAttribute().toArray(new Pokemon[0]), Pokemon.getPokemonAttribute().toArray(new Pokemon[0]));
+    }
+    @Test
+    public void doEat(){
+        Pokemon pokemon=new Pokemon();
+        Status status=new Status();
+        pokemon.doEat();
+        Assertions.assertEquals(status.getHungryPoints(), status.getHungryPoints());
     }
 
 }
