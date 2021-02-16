@@ -47,8 +47,11 @@ public class Status {
     public Status(){}
 
 ///MÉTODO EASYSTATUS
+    public int getAvgPoints(){
+        return (this.getEnergyPoints()+ this.getHungryPoints()+ this.getHealthyPoints()/3);
+    }
 public String getEasyStatus(){
-    int avgPoints= (this.getEnergyPoints()+this.getHungryPoints()+this.getHealthyPoints()/3);
+    int avgPoints = this.getAvgPoints();
     String easyStat="";
     if (avgPoints<25){
         easyStat+= "Bad";

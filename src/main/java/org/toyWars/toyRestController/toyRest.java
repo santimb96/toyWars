@@ -59,7 +59,7 @@ import java.util.ArrayList;
             String actionUpper = action.toUpperCase(); //importante pasar a upper case!
             Actions actions=Actions.valueOf(actionUpper);//pasamos de string a enum
             gameService.doActions(actions);
-            return doAction();
+            return gameService.getResponse();
         }
         /*
         @GetMapping("/getCurrentStatus")

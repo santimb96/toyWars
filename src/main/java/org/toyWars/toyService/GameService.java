@@ -16,6 +16,16 @@ public class GameService{
     private int maxPoints;
     private Action action;
     private RenderType renderType;
+    private String response;
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
     //INSTANCIA DE INTERACCIÓN DEL USUARIO
     private String currentLifeBeing;
 
@@ -53,25 +63,27 @@ public class GameService{
         //Pokemon.setPokemonAttribute(pokemon);
         Pokemon.getPokemonAttribute().add(pokemon);
     }
-    public String doActions (Actions actions){
+    public void doActions (Actions actions){
         String response="";
         Status status=new Status();
         Pokemon pokemon=new Pokemon();
             switch (actions) {
                 case EAT:
                     pokemon.doEat();
-                    response += "";
+                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvgPoints();
                     break;
                 case SLEEP:
                     pokemon.doSleep();
+                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvgPoints();
                     break;
                 case PLAY:
                     pokemon.doPlay();
+                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvgPoints();
                     break;
                 default:
 
             }
-            return response;
+            this.setResponse(response);
     }
     public void resetLifeBeing(){
     }

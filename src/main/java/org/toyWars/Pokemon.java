@@ -61,45 +61,69 @@ public class Pokemon extends LifeBeing{
         Pokemon.pokemonAttribute = pokemonAttribute;
     }
 
-//MÉTODOS DE LA INTERFACE (ACCIONES ENUM EAT, SLEEP Y PLAY
+//MÉTODOS DE LA INTERFACE (ACCIONES ENUM EAT, SLEEP Y PLAY)
     Status status=new Status();
     @Override
     public void doEat() {
         Random random = new Random();
         String [] food = new String[]{"healthyFood", "garbageFood"};
-        for (int i = 0; i < food.length; i++) {
-            int randomPosition = random.nextInt(food.length);
-            String element = food[randomPosition];
+            String element = food[random.nextInt(food.length)];
             if(element.equals("healthyFood")){
-                if(status.getHungryPoints()<=100) {
+                if(status.getHungryPoints()<100) {
                     status.setHungryPoints(20);
                 }
-                if(status.getHealthyPoints()<=100) {
+                if(status.getHealthyPoints()<100) {
                     status.setHealthyPoints(10);
                 }
-                if(status.getEnergyPoints()<=100){
+                if(status.getEnergyPoints()<100){
                     status.setEnergyPoints(20);
                 }
             } else {
-                if(status.getHungryPoints()<=100) {
+                if(status.getHungryPoints()<100) {
                     status.setHungryPoints(20);
                 }
                 status.setHealthyPoints(10*(-1));
-                if (status.getEnergyPoints()<=100){
+                if (status.getEnergyPoints()<100){
                     status.setEnergyPoints(10);
                 }
             }
-            break;
-        }
     }
-
     @Override
     public void doSleep() {
-
+        Random random = new Random();
+        String[] sleep = new String[]{"bad", "good", "excellent"};
+        String element = sleep[random.nextInt(sleep.length)];
+            switch (element) {
+                case "bad":
+                    status.setHungryPoints(-30);
+                    if (status.getEnergyPoints() < 100) {
+                        status.setEnergyPoints(10);
+                    }
+                    status.setHealthyPoints(-10);
+                    break;
+                case "good":
+                    status.setHungryPoints(-25);
+                    if (status.getEnergyPoints() < 100) {
+                        status.setEnergyPoints(20);
+                    }
+                    if (status.getHealthyPoints() < 100) {
+                        status.setHealthyPoints(10);
+                    }
+                    break;
+                default:
+                    status.setHungryPoints(-20);
+                    if (status.getEnergyPoints() < 100) {
+                        status.setEnergyPoints(30);
+                    }
+                    if (status.getHealthyPoints() < 100) {
+                        status.setHealthyPoints(20);
+                        break;
+                    }
+            }
     }
-
     @Override
     public void doPlay() {
+    Random random=new Random();
 
     }
 
