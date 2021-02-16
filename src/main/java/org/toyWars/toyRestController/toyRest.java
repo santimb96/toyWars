@@ -56,8 +56,10 @@ import java.util.ArrayList;
         @GetMapping("/do/{Action}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE")
         public String doAction(@PathVariable ("Action") String action) {
             GameService gameService=new GameService();
-            action.toUpperCase();
-            //PASAR A ENUM!
+            String actionUpper = action.toUpperCase(); //importante pasar a upper case!
+            Actions actions=Actions.valueOf(actionUpper);//pasamos de string a enum
+            gameService.doActions(actions);
+            return response;
         }
         /*
         @GetMapping("/getCurrentStatus")
