@@ -60,13 +60,16 @@ public class GameService{
             switch (actions) {
                 case EAT:
                     pokemon.doEat();
+                    response += "";
                     break;
                 case SLEEP:
                     pokemon.doSleep();
                     break;
-                default:
+                case PLAY:
                     pokemon.doPlay();
                     break;
+                default:
+
             }
             return response;
     }
