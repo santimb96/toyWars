@@ -1,11 +1,15 @@
 package org.toyWars.toyRestController;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.toyWars.Actions;
 import org.toyWars.Pokemon;
 import org.toyWars.toyService.GameService;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -48,11 +52,14 @@ import java.util.ArrayList;
             String[] clientNames = StringUtils.split(names, ",");
             Account account = BankOperationsHelper.initAccount(bank, cash, clientNames);
             return account;
+        }*/
+        @GetMapping("/do/{Action}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE")
+        public String doAction(@PathVariable ("Action") String action) {
+            GameService gameService=new GameService();
+            action.toUpperCase();
+            //PASAR A ENUM!
         }
-        @GetMapping("/doAction")
-        public Student getStudent(@RequestParam(value = "name", defaultValue = "Quijote") String name) {
-            return new Student(counter.incrementAndGet(), String.format(template, name));
-        }
+        /*
         @GetMapping("/getCurrentStatus")
         public Student getStudent(@RequestParam(value = "name", defaultValue = "Quijote") String name) {
             return new Student(counter.incrementAndGet(), String.format(template, name));

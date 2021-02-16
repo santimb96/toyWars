@@ -53,11 +53,9 @@ public class GameService{
         //Pokemon.setPokemonAttribute(pokemon);
         Pokemon.pokemonAttribute.add(pokemon);
     }
-    public void doActions (){
+    public void doActions (Actions actions){
         Pokemon pokemon=new Pokemon();
-        Actions[] currentAction = Actions.values();
-        for (int i = 0; i < currentAction.length; i++) {
-            switch (currentAction[i]) {
+            switch (actions) {
                 case EAT:
                     pokemon.doEat();
                     break;
@@ -68,8 +66,6 @@ public class GameService{
                     pokemon.doPlay();
                     break;
             }
-        }
-
     }
     public void resetLifeBeing(){
     }

@@ -7,6 +7,7 @@ import org.toyWars.toyService.GameService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootTest
 class UnitTestingApplicationTests {
@@ -23,7 +24,7 @@ class UnitTestingApplicationTests {
         Pokemon pokemon=new Pokemon();
         GameService gameService=new GameService();
         gameService.initPokemon("Charizard", "fire", "red");
-        Assertions.assertEquals(Arrays.asList("Charizard", "fire", "red"), Pokemon.getPokemonAttribute());
+        Assertions.assertArrayEquals(Pokemon.pokemonAttribute.toArray(), Pokemon.getPokemonAttribute().toArray(new Pokemon[0]));
     }
 
 }
