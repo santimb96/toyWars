@@ -19,13 +19,13 @@ class UnitTestingApplicationTests {
         Assertions.assertEquals(pokemon.getType(), "fire", "No es igual");
         Assertions.assertEquals(pokemon.getColor(), "red", "No es igual");
     }
-    @Test
+    /*@Test
     public void initPokemonTest(){
         Pokemon pokemon=new Pokemon();
         GameService gameService=new GameService();
         gameService.initPokemon("Charizard", "fire", "red");
         Assertions.assertArrayEquals(Pokemon.getPokemonAttribute().toArray(new Pokemon[0]), Pokemon.getPokemonAttribute().toArray(new Pokemon[0]));
-    }
+    }*/
     @Test
     public void doEat(){
         Pokemon pokemon=new Pokemon();

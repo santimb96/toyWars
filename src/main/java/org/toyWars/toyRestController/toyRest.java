@@ -37,7 +37,7 @@ import java.util.ArrayList;
                                              @RequestParam(value = "type", defaultValue = "Electric") String type,
                                              @RequestParam(value = "color", defaultValue = "yellow") String color) {
             GameService gameService = new GameService();
-            gameService.initPokemon("Charmander", "fire", "red");
+            gameService.initPokemon();
             Pokemon pokemon = new Pokemon();
             return Pokemon.getPokemonAttribute();
         }

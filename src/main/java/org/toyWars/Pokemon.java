@@ -69,23 +69,13 @@ public class Pokemon extends LifeBeing{
         String [] food = new String[]{"healthyFood", "garbageFood"};
             String element = food[random.nextInt(food.length)];
             if(element.equals("healthyFood")){
-                if(status.getHungryPoints()<100) {
                     status.setHungryPoints(20);
-                }
-                if(status.getHealthyPoints()<100) {
                     status.setHealthyPoints(10);
-                }
-                if(status.getEnergyPoints()<100){
                     status.setEnergyPoints(20);
-                }
             } else {
-                if(status.getHungryPoints()<100) {
                     status.setHungryPoints(20);
-                }
-                status.setHealthyPoints(10*(-1));
-                if (status.getEnergyPoints()<100){
+                    status.setHealthyPoints(10*(-1));
                     status.setEnergyPoints(10);
-                }
             }
     }
     @Override
@@ -96,29 +86,19 @@ public class Pokemon extends LifeBeing{
             switch (element) {
                 case "bad":
                     status.setHungryPoints(-30);
-                    if (status.getEnergyPoints() < 100) {
-                        status.setEnergyPoints(10);
-                    }
+                    status.setEnergyPoints(10);
                     status.setHealthyPoints(-10);
                     break;
                 case "good":
                     status.setHungryPoints(-25);
-                    if (status.getEnergyPoints() < 100) {
-                        status.setEnergyPoints(20);
-                    }
-                    if (status.getHealthyPoints() < 100) {
-                        status.setHealthyPoints(10);
-                    }
+                    status.setEnergyPoints(20);
+                    status.setHealthyPoints(10);
                     break;
                 default:
                     status.setHungryPoints(-20);
-                    if (status.getEnergyPoints() < 100) {
-                        status.setEnergyPoints(30);
-                    }
-                    if (status.getHealthyPoints() < 100) {
-                        status.setHealthyPoints(20);
-                        break;
-                    }
+                    status.setEnergyPoints(30);
+                    status.setHealthyPoints(20);
+                    break;
             }
     }
     @Override

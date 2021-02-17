@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static org.toyWars.Actions.*;
 
@@ -54,14 +55,20 @@ public class GameService{
     }
 
     /////MÉTODOS
-    public void initPokemon(String fullName, String type, String color){
+    public void initPokemon(){
+        Random random=new Random() ;
         Pokemon pokemon=new Pokemon();
-        //ArrayList<Pokemon> pokemonAtr = new ArrayList<>();
-        pokemon.setName(fullName);
-        pokemon.setType(type);
-        pokemon.setColor(color);
-        //Pokemon.setPokemonAttribute(pokemon);
+        String[] pokeMonster=new String[]{"Charmander", "Bulbasaur", "Squirtle"};
+        String[] pokeType=new String[]{"Fire", "Leaf", "Water"};
+        String[] pokeColor=new String[]{"Red", "Green", "Blue"};
+        int position = random.nextInt(pokeMonster.length);
+        pokemon.setName(pokeMonster[position]);
+        pokemon.setType(pokeType[position]);
+        pokemon.setColor(pokeColor[position]);
         Pokemon.getPokemonAttribute().add(pokemon);
+        /*pokemon.setName(fullName);
+        pokemon.setType(type);
+        pokemon.setColor(color);*/
     }
     public void doActions (Actions actions){
         String response="";
