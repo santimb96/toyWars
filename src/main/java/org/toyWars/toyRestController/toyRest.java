@@ -1,9 +1,7 @@
 package org.toyWars.toyRestController;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.toyWars.Actions;
 import org.toyWars.Pokemon;
 import org.toyWars.toyService.GameService;
@@ -53,7 +51,7 @@ import java.util.ArrayList;
             Account account = BankOperationsHelper.initAccount(bank, cash, clientNames);
             return account;
         }*/
-        @GetMapping("/do/{Action}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE")
+        @GetMapping(value="/do/{Action}", produces= MediaType.APPLICATION_JSON_VALUE)
         public String doAction(@PathVariable ("Action") String action) {
             GameService gameService=new GameService();
             String actionUpper = action.toUpperCase(); //importante pasar a upper case!
