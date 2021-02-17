@@ -8,6 +8,16 @@ public class Status {
     private int energyPoints = 50;
     private int healthyPoints = 50;
     private String easyStat;
+    private int avg;
+
+    public int getAvg() {
+        return avg;
+    }
+
+    public void setAvg(int avg) {
+        this.avg = avg;
+    }
+
     private static ArrayList<Status> status = new ArrayList<>();
 
     public int getHungryPoints() {
@@ -62,7 +72,7 @@ public class Status {
     }
 
     public String getEasyStatus() {
-        int avgPoints = this.getAvgPoints();
+        int avgPoints = (this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints()) / 3;
         String easyStat;
         if (avgPoints < 25) {
             easyStat = "Bad";
@@ -73,6 +83,7 @@ public class Status {
         } else {
             easyStat = "Excellent";
         }
+        this.setAvg(avgPoints);
         return easyStat;
     }
 }

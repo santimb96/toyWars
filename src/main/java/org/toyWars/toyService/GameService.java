@@ -77,7 +77,7 @@ public class GameService{
             switch (actions) {
                 case EAT:
                     pokemon.doEat();
-                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvgPoints();
+                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
                     break;
                 case SLEEP:
                     pokemon.doSleep();
