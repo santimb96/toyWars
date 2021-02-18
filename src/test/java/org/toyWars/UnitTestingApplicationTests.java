@@ -21,6 +21,7 @@ class UnitTestingApplicationTests {
     }
     @Test
     public void doAction(){
+        Status status=new Status();
         GameService gameservice=new GameService();
         gameservice.doActions(Actions.EAT);
         Assertions.assertEquals("El estado es: Good y su puntuación media es: 50", gameservice.getResponse());

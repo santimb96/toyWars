@@ -2,6 +2,7 @@ package org.toyWars.toyService;
 
 import org.springframework.stereotype.Service;
 import org.toyWars.*;
+import org.toyWars.toyRestController.ToyRest;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +13,21 @@ import java.util.Random;
 import static org.toyWars.Actions.*;
 
 @Service
-public class GameService{
+public class GameService implements IRender{
     private List <UserAction> userAction;
     private int maxPoints;
     private Action action;
     private RenderType renderType;
     private String response;
+    private String renderTypeFinal;
+
+    public String getRenderTypeFinal() {
+        return renderTypeFinal;
+    }
+
+    public void setRenderTypeFinal(String renderTypeFinal) {
+        this.renderTypeFinal = renderTypeFinal;
+    }
 
     public void setResponse(String response) {
         this.response = response;
@@ -81,21 +91,36 @@ public class GameService{
                     break;
                 case SLEEP:
                     pokemon.doSleep();
-                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvgPoints();
+                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
                     break;
                 case PLAY:
                     pokemon.doPlay();
-                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvgPoints();
+                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
                     break;
                 default:
 
             }
             this.setResponse(response);
-    }
-    public void resetLifeBeing(){
-    }
-    public void IRender(IRender render){}
-    //public Integer getStatus(){return Statu}
+    }/*
+    @Override
+        public String doRender(RenderType renderType) {
+        switch (renderType){
+            case HTML:
+                break;
+            case JSON:
+                return this.getResponse();
+                break;
+            case CONSOLA:
+                System.out.println(this.getResponse());
+                break;
+            default:
+                break;
+        }
+        return "hello";*/
 
+    @Override
+    public void doRender(RenderType renderType) {
 
+    }
 }
+

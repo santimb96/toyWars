@@ -64,7 +64,16 @@ public class Status {
 
     //constructor
     public Status() {
+        this.hungryPoints = 50;
+        this.energyPoints = 50;
+        this.healthyPoints = 50;}
+
+    public Status(int hungryPoints, int energyPoints, int healthyPoints) {
+        this.hungryPoints = 50;
+        this.energyPoints = 50;
+        this.healthyPoints = 50;
     }
+
 
     ///MÉTODO EASYSTATUS
     public int getAvgPoints() {

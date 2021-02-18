@@ -4,6 +4,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.toyWars.Actions;
 import org.toyWars.Pokemon;
+import org.toyWars.RenderType;
 import org.toyWars.toyService.GameService;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
 
 @RestController
-    public class toyRest {
+    public class ToyRest {
 /*
         private static final String template = "Hello, %s!";
         private final AtomicLong counter = new AtomicLon;
@@ -41,15 +42,15 @@ import java.util.ArrayList;
             Pokemon pokemon = new Pokemon();
             return Pokemon.getPokemonAttribute();
         }
-/*
 
-        @GetMapping("/render")
-        public Account getTeam(@RequestParam(value = "names", defaultValue = "Pepito,Juanito") String names,
-                               @RequestParam(value = "bank", defaultValue = "ING") String bank,
-                               @RequestParam(value = "cash", defaultValue = "20.") Double cash) {
-            String[] clientNames = StringUtils.split(names, ",");
-            Account account = BankOperationsHelper.initAccount(bank, cash, clientNames);
-            return account;
+
+       /* @GetMapping(value = "/render/{mode}", produces = MediaType.APPLICATION_JSON_VALUE)
+        public String doRender(@PathVariable ("mode") String mode) {
+            GameService gameService=new GameService();
+            String modeUpper = mode.toUpperCase();
+            RenderType renderType=RenderType.valueOf(modeUpper);
+            gameService.doRender(renderType);
+            return gameService.getResponse();
         }*/
         @GetMapping(value="/do/{Action}", produces= MediaType.APPLICATION_JSON_VALUE)
         public String doAction(@PathVariable ("Action") String action) {
