@@ -20,6 +20,15 @@ public class GameService implements IRender{
     private RenderType renderType;
     private String response;
     private String renderTypeFinal;
+    private static List <Actions> actionsList = new ArrayList<>();
+
+    public static List<Actions> getActionsList() {
+        return actionsList;
+    }
+
+    public static void setActionsList(List<Actions> actionsList) {
+        GameService.actionsList = actionsList;
+    }
 
     public String getRenderTypeFinal() {
         return renderTypeFinal;
@@ -120,7 +129,25 @@ public class GameService implements IRender{
 
     @Override
     public void doRender(RenderType renderType) {
-
+        switch (renderType){
+            case HTML:
+                break;
+            case JSON:
+                this.getResponse();
+            break;
+            case CONSOLA:
+                System.out.println(this.getResponse());
+                break;
+            default:
+                break;
+        }
+    }
+    //ACTIONS LIST
+    public void Actions(){
+        Actions actions;
+        for (int i = 0; i < values().length; i++) {
+            setActionsList(values()[i]);
+        }
     }
 }
 

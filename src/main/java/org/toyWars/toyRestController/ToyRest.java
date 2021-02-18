@@ -3,6 +3,7 @@ package org.toyWars.toyRestController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.toyWars.Actions;
+import org.toyWars.IActions;
 import org.toyWars.Pokemon;
 import org.toyWars.RenderType;
 import org.toyWars.toyService.GameService;
@@ -10,6 +11,7 @@ import org.toyWars.toyService.GameService;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -44,14 +46,14 @@ import java.util.ArrayList;
         }
 
 
-       /* @GetMapping(value = "/render/{mode}", produces = MediaType.APPLICATION_JSON_VALUE)
+       @GetMapping(value = "/render/{mode}", produces = MediaType.APPLICATION_JSON_VALUE)
         public String doRender(@PathVariable ("mode") String mode) {
             GameService gameService=new GameService();
             String modeUpper = mode.toUpperCase();
             RenderType renderType=RenderType.valueOf(modeUpper);
             gameService.doRender(renderType);
             return gameService.getResponse();
-        }*/
+        }
         @GetMapping(value="/do/{Action}", produces= MediaType.APPLICATION_JSON_VALUE)
         public String doAction(@PathVariable ("Action") String action) {
             GameService gameService=new GameService();
@@ -60,6 +62,13 @@ import java.util.ArrayList;
             gameService.doActions(actions);
             return gameService.getResponse();
         }
+        @GetMapping("/getActions")
+        public List <String> getActions(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
+        GameService gameService = new GameService();
+        gameService.initPokemon();
+        Pokemon pokemon = new Pokemon();
+        return Pokemon.getPokemonAttribute();
+    }
         /*
         @GetMapping("/getCurrentStatus")
         public Student getStudent(@RequestParam(value = "name", defaultValue = "Quijote") String name) {
