@@ -3,15 +3,11 @@ package org.toyWars.toyRestController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.toyWars.Actions;
-import org.toyWars.IActions;
 import org.toyWars.Pokemon;
 import org.toyWars.RenderType;
 import org.toyWars.toyService.GameService;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 
 
 @RestController
@@ -30,10 +26,6 @@ import java.util.List;
             }
         }*/
         //prueba REST
-        @GetMapping("/getActions")
-        public String getName(@RequestParam(value = "name", defaultValue = "Pika") String name) {
-        return name;
-        }
 
         @GetMapping("/new")
         public ArrayList<Pokemon> getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
@@ -63,12 +55,11 @@ import java.util.List;
             return gameService.getResponse();
         }
         @GetMapping("/getActions")
-        public List <String> getActions(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
+        public String getActions(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
         GameService gameService = new GameService();
-        gameService.initPokemon();
-        Pokemon pokemon = new Pokemon();
-        return Pokemon.getPokemonAttribute();
-    }
+        gameService.listActions();
+        return gameService.listActions();
+        }
         /*
         @GetMapping("/getCurrentStatus")
         public Student getStudent(@RequestParam(value = "name", defaultValue = "Quijote") String name) {

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import static org.toyWars.Actions.*;
@@ -85,9 +86,6 @@ public class GameService implements IRender{
         pokemon.setType(pokeType[position]);
         pokemon.setColor(pokeColor[position]);
         Pokemon.getPokemonAttribute().add(pokemon);
-        /*pokemon.setName(fullName);
-        pokemon.setType(type);
-        pokemon.setColor(color);*/
     }
     public void doActions (Actions actions){
         String response="";
@@ -143,11 +141,16 @@ public class GameService implements IRender{
         }
     }
     //ACTIONS LIST
-    public void Actions(){
-        Actions actions;
-        for (int i = 0; i < values().length; i++) {
-            setActionsList(values()[i]);
+    public String listActions(){
+        /*for (int i = 0; i < Actions.values().length; i++) {
+                getActionsList().add(Actions.values()[i]);
+             }*/
+        String values=("Las acciones que puede realizar son ");
+        for (int i = 0; i < Actions.values().length; i++) {
+            values += (values()[i].name()).toLowerCase()+ ", ";
+            }
+        return values;
         }
     }
-}
+
 
