@@ -19,6 +19,12 @@ class UnitTestingApplicationTests {
         Assertions.assertEquals(pokemon.getType(), "fire", "No es igual");
         Assertions.assertEquals(pokemon.getColor(), "red", "No es igual");
     }
+    @Test
+    public void doAction(){
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.EAT);
+        Assertions.assertEquals("El estado es: Good y su puntuación media es: 50", gameservice.getResponse());
+    }
     /*@Test
     public void initPokemonTest(){
         Pokemon pokemon=new Pokemon();

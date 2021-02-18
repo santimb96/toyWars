@@ -21,7 +21,7 @@ public class Status {
     private static ArrayList<Status> status = new ArrayList<>();
 
     public int getHungryPoints() {
-        if (hungryPoints > 100) {
+        if (this.hungryPoints > 100) {
             hungryPoints = 100;
         }
         return hungryPoints;
@@ -32,7 +32,7 @@ public class Status {
     }
 
     public int getEnergyPoints() {
-        if (energyPoints > 100) {
+        if (this.energyPoints > 100) {
             energyPoints = 100;
         }
         return energyPoints;
@@ -43,7 +43,7 @@ public class Status {
     }
 
     public int getHealthyPoints() {
-        if (healthyPoints > 100) {
+        if (this.healthyPoints > 100) {
             healthyPoints = 100;
         }
         return healthyPoints;
