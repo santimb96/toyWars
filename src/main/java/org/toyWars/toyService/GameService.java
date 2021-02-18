@@ -78,6 +78,7 @@ public class GameService implements IRender{
     public void initPokemon(){
         Random random=new Random() ;
         Pokemon pokemon=new Pokemon();
+        Status status=new Status(50,50,50);
         String[] pokeMonster=new String[]{"Charmander", "Bulbasaur", "Squirtle"};
         String[] pokeType=new String[]{"Fire", "Leaf", "Water"};
         String[] pokeColor=new String[]{"Red", "Green", "Blue"};
@@ -108,23 +109,7 @@ public class GameService implements IRender{
 
             }
             this.setResponse(response);
-    }/*
-    @Override
-        public String doRender(RenderType renderType) {
-        switch (renderType){
-            case HTML:
-                break;
-            case JSON:
-                return this.getResponse();
-                break;
-            case CONSOLA:
-                System.out.println(this.getResponse());
-                break;
-            default:
-                break;
-        }
-        return "hello";*/
-
+    }
     @Override
     public void doRender(RenderType renderType) {
         switch (renderType){

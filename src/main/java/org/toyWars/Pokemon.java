@@ -103,10 +103,19 @@ public class Pokemon extends LifeBeing{
     }
     @Override
     public void doPlay() {
-    Random random=new Random();
-
+        Random random = new Random();
+        String [] sensation= new String[]{"fun", "bored"};
+        String element = sensation[random.nextInt(sensation.length)];
+        if(element.equals("fun")){
+            status.setHungryPoints(-20);
+            status.setHealthyPoints(20);
+            status.setEnergyPoints(-15);
+        } else {
+            status.setHungryPoints(-30);
+            status.setHealthyPoints(10);
+            status.setEnergyPoints(-20);
+        }
     }
-
     @Override
     public List<Actions> getCurrentAction() {
         return null;
