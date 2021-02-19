@@ -22,13 +22,13 @@ public class GameService{
     private RenderType renderType;
     private String response;
     private String renderTypeFinal;
-    private static List <Pokemon> actionsList = new ArrayList<>();
+    private static List <Actions> actionsList = new ArrayList<>();
 
-    public static List<Pokemon> getActionsList() {
+    public static List<Actions> getActionsList() {
         return actionsList;
     }
 
-    public static void setActionsList(List<Pokemon> actionsList) {
+    public static void setActionsList(List<Actions> actionsList) {
         GameService.actionsList = actionsList;
     }
 

@@ -52,17 +52,16 @@ public class Status extends Pokemon {
 
     public void setHealthyPoints(int healthyPoints) {
         int hP=getHealthyPoints();
-        this.healthyPoints = healthyPoints;
+        this.healthyPoints = hP+healthyPoints;
     }
     //constructor
     public Status() {}
 
     public Status(int hungryPoints, int energyPoints, int healthyPoints) {
-        this.hungryPoints = healthyPoints;
+        this.hungryPoints = hungryPoints;
         this.energyPoints = energyPoints;
-        this.healthyPoints = hungryPoints;
+        this.healthyPoints = healthyPoints;
     }
-
 
     ///MÉTODO EASYSTATUS
     public String getEasyStatus() {

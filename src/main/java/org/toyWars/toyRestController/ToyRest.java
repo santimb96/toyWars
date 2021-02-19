@@ -48,8 +48,6 @@ import java.util.List;
         GameService gameService = new GameService();
 
     }*/
-
-
        @GetMapping(value = "/render/{mode}", produces = MediaType.APPLICATION_JSON_VALUE)
         public String doRender(@PathVariable ("mode") String mode) {
             GameService gameService=new GameService();
