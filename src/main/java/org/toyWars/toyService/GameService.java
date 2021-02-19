@@ -106,9 +106,13 @@ public class GameService implements IRender{
                     response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
                     break;
                 default:
-
             }
-            this.setResponse(response);
+            if (status.getAvg()<=0){
+                response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                this.setResponse(response);
+            } else {
+                this.setResponse(response);
+            }
     }
     @Override
     public void doRender(RenderType renderType) {
@@ -125,14 +129,14 @@ public class GameService implements IRender{
                 break;
         }
     }
-    //ACTIONS LIST
+    //getActions() return!!
     public String listActions(){
         /*for (int i = 0; i < Actions.values().length; i++) {
                 getActionsList().add(Actions.values()[i]);
              }*/
-        String values=("Las acciones que puede realizar son ");
+        String values=("Las acciones que puede realizar son: ");
         for (int i = 0; i < Actions.values().length; i++) {
-            values += (values()[i].name()).toLowerCase()+ ", ";
+            values += values()[i].name()+ ", ";
             }
         return values;
         }
