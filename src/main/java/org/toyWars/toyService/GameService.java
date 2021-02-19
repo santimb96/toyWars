@@ -1,5 +1,6 @@
 package org.toyWars.toyService;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.toyWars.*;
 import org.toyWars.toyRestController.ToyRest;
@@ -14,7 +15,7 @@ import java.util.Random;
 import static org.toyWars.Actions.*;
 
 @Service
-public class GameService implements IRender{
+public class GameService{
     private List <UserAction> userAction;
     private int maxPoints;
     private Action action;
@@ -113,21 +114,6 @@ public class GameService implements IRender{
             } else {
                 this.setResponse(response);
             }
-    }
-    @Override
-    public void doRender(RenderType renderType) {
-        switch (renderType){
-            case HTML:
-                break;
-            case JSON:
-                this.getResponse();
-            break;
-            case CONSOLA:
-                System.out.println(this.getResponse());
-                break;
-            default:
-                break;
-        }
     }
     //getActions() return!!
     public void listActions(){

@@ -1,5 +1,5 @@
 package org.toyWars;
 
 public interface IRender {
-    public void doRender(RenderType renderType);
+    public String doRender(RenderType renderType);
 }

@@ -14,10 +14,9 @@ class UnitTestingApplicationTests {
 
     @Test
     public void Pokemon() {
-		Pokemon pokemon = new Pokemon("Charizard", "fire", "red" );
-        Assertions.assertEquals(pokemon.getName(), "Charizard", "No es igual");
-        Assertions.assertEquals(pokemon.getType(), "fire", "No es igual");
-        Assertions.assertEquals(pokemon.getColor(), "red", "No es igual");
+		Pokemon pokemon=new Pokemon();
+		initPokemon();
+		Assertions.assertEquals(Arrays.asList("Bulbasaur", "Leaf","Green",null), Pokemon.getPokemonAttribute() );
     }
     @Test
     public void doAction(){

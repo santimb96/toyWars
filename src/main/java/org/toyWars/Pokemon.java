@@ -1,14 +1,18 @@
 package org.toyWars;
 
+import net.minidev.json.JSONArray;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Pokemon extends LifeBeing{
     private String name;
-    //tipo (planta, fuego...)
     private String type;
     private String color;
+    private String returnRender;
     private static List<Pokemon> pokemonAttribute = new ArrayList<>();
     private static List<Actions> currentAction = new ArrayList<>();
 
@@ -62,8 +66,15 @@ public class Pokemon extends LifeBeing{
     public static void setPokemonAttribute(ArrayList<Pokemon> pokemonAttribute) {
         Pokemon.pokemonAttribute = pokemonAttribute;
     }
+    public String setReturnRender(String returnRender) {
+        this.returnRender = returnRender;
+        return returnRender;
+    }
+    public String getReturnRender() {
+        return this.returnRender;
+    }
 
-//MÉTODOS DE LA INTERFACE (ACCIONES ENUM EAT, SLEEP Y PLAY)
+    //MÉTODOS DE LA INTERFACE (ACCIONES ENUM EAT, SLEEP Y PLAY)
     Status status=new Status();
     @Override
     public void doEat() {
@@ -122,9 +133,27 @@ public class Pokemon extends LifeBeing{
     public List<Actions> getCurrentAction() {
         return currentAction;
     }
-
     @Override
-    public void doRender(RenderType renderType) {
-
+    public String toString() {
+        return "name: "+name+" type: "+type+" color: "+color;
+    }
+    @Override
+    public String doRender(RenderType renderType) {
+        String returnRender = StringUtils.EMPTY;
+        switch (renderType){
+            case CONSOLE:
+                System.out.println("Pokemon: " + getPokemonAttribute().toString());
+                break;
+            case HTML:
+                returnRender = String.format("<div>%s</div>",getPokemonAttribute().toString());
+                break;
+            case JSON:
+                returnRender = JSONArray.toJSONString(getPokemonAttribute());
+                break;
+            default:
+                returnRender = "No se ha seleccionado una opción valida. Íntentalo de nuevo";
+                break;
+        }
+        return setReturnRender(returnRender);
     }
 }

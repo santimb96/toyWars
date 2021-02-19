@@ -43,10 +43,11 @@ import java.util.List;
        @GetMapping(value = "/render/{mode}", produces = MediaType.APPLICATION_JSON_VALUE)
         public String doRender(@PathVariable ("mode") String mode) {
             GameService gameService=new GameService();
+            Pokemon pokemon=new Pokemon();
             String modeUpper = mode.toUpperCase();
             RenderType renderType=RenderType.valueOf(modeUpper);
-            gameService.doRender(renderType);
-            return gameService.getResponse();
+            pokemon.doRender(renderType);
+            return pokemon.getReturnRender();
         }
         @GetMapping(value="/do/{Action}", produces= MediaType.APPLICATION_JSON_VALUE)
         public String doAction(@PathVariable ("Action") String action) {
