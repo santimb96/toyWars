@@ -1,17 +1,18 @@
+/*Estado del LifeBeing (bastaría con el número de puntos)*/
 package org.toyWars;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Status {
-    private int hungryPoints = 50;
-    private int energyPoints = 50;
-    private int healthyPoints = 50;
-    private String easyStat;
+    private static int hungryPoints;
+    private static int energyPoints;
+    private static int healthyPoints;
+    private static String easyStat;
     private int avg;
 
     public int getAvg() {
-        return avg;
+        return ((this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints()) / 3);
     }
 
     public void setAvg(int avg) {
@@ -28,7 +29,8 @@ public class Status {
     }
 
     public void setHungryPoints(int hungryPoints) {
-        this.hungryPoints += hungryPoints;
+        int hP=getHungryPoints();
+        this.hungryPoints = hP+hungryPoints;
     }
 
     public int getEnergyPoints() {
@@ -39,7 +41,8 @@ public class Status {
     }
 
     public void setEnergyPoints(int energyPoints) {
-        this.energyPoints += energyPoints;
+        int eP=getEnergyPoints();
+        this.energyPoints = eP+energyPoints;
     }
 
     public int getHealthyPoints() {
@@ -50,9 +53,9 @@ public class Status {
     }
 
     public void setHealthyPoints(int healthyPoints) {
-        this.healthyPoints += healthyPoints;
+        int hP=getHealthyPoints();
+        this.healthyPoints = healthyPoints;
     }
-
 
     public static ArrayList<Status> getStatus() {
         return status;
@@ -63,25 +66,19 @@ public class Status {
     }
 
     //constructor
-    public Status() {
-        this.hungryPoints = 50;
-        this.energyPoints = 50;
-        this.healthyPoints = 50;}
+    public Status() {}
 
     public Status(int hungryPoints, int energyPoints, int healthyPoints) {
-        this.hungryPoints = 50;
-        this.energyPoints = 50;
-        this.healthyPoints = 50;
+        this.hungryPoints = healthyPoints;
+        this.energyPoints = energyPoints;
+        this.healthyPoints = hungryPoints;
     }
 
 
     ///MÉTODO EASYSTATUS
-    public int getAvgPoints() {
-        return ((this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints()) / 3);
-    }
-
     public String getEasyStatus() {
-        int avgPoints = (this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints()) / 3;
+        //int avgPoints = (this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints()) / 3;
+        int avgPoints=getAvg();
         String easyStat;
         if (avgPoints < 25) {
             easyStat = "Bad";
@@ -92,7 +89,7 @@ public class Status {
         } else {
             easyStat = "Excellent";
         }
-        this.setAvg(avgPoints);
+        //this.setAvg(avgPoints); //por qué le estamos haciendo un set?
         return easyStat;
     }
 }

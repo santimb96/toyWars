@@ -55,7 +55,7 @@ public class Pokemon extends LifeBeing{
 
     public static ArrayList<Pokemon> getPokemonAttribute() {
         return pokemonAttribute;
-    }
+    } //what this does?
 
     public static void setPokemonAttribute(ArrayList<Pokemon> pokemonAttribute) {
         Pokemon.pokemonAttribute = pokemonAttribute;

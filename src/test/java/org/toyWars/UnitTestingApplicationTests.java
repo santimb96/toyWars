@@ -21,7 +21,7 @@ class UnitTestingApplicationTests {
     }
     @Test
     public void doAction(){
-        Status status=new Status();
+        Status status=new Status(50,50,50);
         GameService gameservice=new GameService();
         gameservice.doActions(Actions.EAT);
         Assertions.assertEquals("El estado es: Good y su puntuación media es: 50", gameservice.getResponse());
@@ -36,9 +36,36 @@ class UnitTestingApplicationTests {
     @Test
     public void doEat(){
         Pokemon pokemon=new Pokemon();
-        Status status=new Status();
+        Status status=new Status(50,50,50);
         pokemon.doEat();
-        Assertions.assertEquals(status.getHungryPoints(), status.getHungryPoints());
+        Assertions.assertEquals(70, status.getHungryPoints());
+    }
+    @Test
+    public void doEatAverage(){
+        Pokemon pokemon=new Pokemon();
+        Status status=new Status(50,50,50);
+        pokemon.doEat();
+        int average=(status.getHealthyPoints()+status.getEnergyPoints()+status.getHungryPoints())/3;
+        Assertions.assertEquals(average, status.getAvg());
     }
 
+    @Test
+    public void doSleepAverage(){
+        Pokemon pokemon=new Pokemon();
+        Status status=new Status(50,50,50);
+        pokemon.doSleep();
+        int average=(status.getHealthyPoints()+status.getEnergyPoints()+status.getHungryPoints())/3;
+        Assertions.assertEquals(average, status.getAvg());
+    }
+
+    //trying the default values (50,50,50) on initPokemon
+    @Test
+    public void initPokemon(){
+        GameService gameService= new GameService();
+        Pokemon pokemon=new Pokemon();
+        Status status=new Status();
+        gameService.initPokemon();
+        pokemon.doEat();
+        Assertions.assertEquals(70, status.getHungryPoints());
+    }
 }

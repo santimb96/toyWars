@@ -1,3 +1,7 @@
+/* Registro del momento en el que se ha ejecutado la action.
+* El tipo de juguete sobre el que se ha realizado.
+* Los puntos de inicio.
+* Los puntos conseguidos.*/
 package org.toyWars;
 
 import java.util.ArrayList;
@@ -13,4 +17,6 @@ public class UserAction {
     public void setCurrentStatus(List<List> currentStatus) {
         this.currentStatus = currentStatus;
     }
+
+
 }

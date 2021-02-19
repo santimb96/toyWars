@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.toyWars.Actions;
 import org.toyWars.Pokemon;
 import org.toyWars.RenderType;
+import org.toyWars.Status;
 import org.toyWars.toyService.GameService;
 
 import java.util.ArrayList;
@@ -60,6 +61,7 @@ import java.util.ArrayList;
         gameService.listActions();
         return gameService.listActions();
         }
+
         /*
         @GetMapping("/getCurrentStatus")
         public Student getStudent(@RequestParam(value = "name", defaultValue = "Quijote") String name) {
