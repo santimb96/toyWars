@@ -9,7 +9,9 @@ public class Pokemon extends LifeBeing{
     //tipo (planta, fuego...)
     private String type;
     private String color;
-    private static ArrayList<Pokemon> pokemonAttribute = new ArrayList<>();
+    private static List<Pokemon> pokemonAttribute = new ArrayList<>();
+    private static List<Actions> currentAction = new ArrayList<>();
+
 
     public Pokemon(String name, String type, String color){
         this.name=name;
@@ -53,7 +55,7 @@ public class Pokemon extends LifeBeing{
         this.color = color;
     }
 
-    public static ArrayList<Pokemon> getPokemonAttribute() {
+    public static List<Pokemon> getPokemonAttribute() {
         return pokemonAttribute;
     } //what this does?
 
@@ -118,7 +120,7 @@ public class Pokemon extends LifeBeing{
     }
     @Override
     public List<Actions> getCurrentAction() {
-        return null;
+        return currentAction;
     }
 
     @Override

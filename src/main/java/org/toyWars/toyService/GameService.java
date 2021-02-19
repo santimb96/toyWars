@@ -130,15 +130,16 @@ public class GameService implements IRender{
         }
     }
     //getActions() return!!
-    public String listActions(){
-        /*for (int i = 0; i < Actions.values().length; i++) {
-                getActionsList().add(Actions.values()[i]);
-             }*/
-        String values=("Las acciones que puede realizar son: ");
+    public void listActions(){
+        Pokemon pokemon=new Pokemon();
+        for (int i = 0; i < Actions.values().length; i++) {
+                pokemon.getCurrentAction().add(Actions.values()[i]);
+             }
+       /* String values=("Las acciones que puede realizar son: ");
         for (int i = 0; i < Actions.values().length; i++) {
             values += values()[i].name()+ ", ";
             }
-        return values;
+        return values;*/
         }
     }
 

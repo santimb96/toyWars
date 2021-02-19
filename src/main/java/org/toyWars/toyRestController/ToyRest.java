@@ -9,6 +9,7 @@ import org.toyWars.Status;
 import org.toyWars.toyService.GameService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -29,9 +30,9 @@ import java.util.ArrayList;
         //prueba REST
 
         @GetMapping("/new")
-        public ArrayList<Pokemon> getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
-                                             @RequestParam(value = "type", defaultValue = "Electric") String type,
-                                             @RequestParam(value = "color", defaultValue = "yellow") String color) {
+        public List<Pokemon> getPokemon(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
+                                        @RequestParam(value = "type", defaultValue = "Electric") String type,
+                                        @RequestParam(value = "color", defaultValue = "yellow") String color) {
             GameService gameService = new GameService();
             gameService.initPokemon();
             Pokemon pokemon = new Pokemon();
@@ -56,10 +57,11 @@ import java.util.ArrayList;
             return gameService.getResponse();
         }
         @GetMapping("/getActions")
-        public String getActions(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
+        public List <Actions> getActions(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
         GameService gameService = new GameService();
+        Pokemon pokemon=new Pokemon();
         gameService.listActions();
-        return gameService.listActions();
+        return pokemon.getCurrentAction();
         }
 
         /*
