@@ -38,8 +38,16 @@ import java.util.List;
             Pokemon pokemon = new Pokemon();
             return Pokemon.getPokemonAttribute();
         }
+    /*@GetMapping("/getCurrentStatus")
+    public List<Pokemon> getFullStatus(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
+                                       @RequestParam(value = "type", defaultValue = "Electric") String type,
+                                       @RequestParam(value = "color", defaultValue = "yellow") String color,
+                                       @RequestParam(value = "hungryPoints", defaultValue = "50") int hungryPoints,
+                                       @RequestParam(value = "energyPoints", defaultValue = "50") int energyPoints,
+                                       @RequestParam(value = "healthyPoints", defaultValue = "50") int healthyPoints) {
+        GameService gameService = new GameService();
 
-
+    }*/
        @GetMapping(value = "/render/{mode}", produces = MediaType.APPLICATION_JSON_VALUE)
         public String doRender(@PathVariable ("mode") String mode) {
             GameService gameService=new GameService();
