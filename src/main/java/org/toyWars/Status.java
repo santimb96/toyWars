@@ -54,7 +54,7 @@ public class Status {
 
     public void setHealthyPoints(int healthyPoints) {
         int hP=getHealthyPoints();
-        this.healthyPoints = healthyPoints;
+        this.healthyPoints = hP+healthyPoints;
     }
 
     public static ArrayList<Status> getStatus() {
