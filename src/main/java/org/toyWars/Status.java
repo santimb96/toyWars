@@ -80,13 +80,18 @@ public class Status {
         //int avgPoints = (this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints()) / 3;
         int avgPoints=getAvg();
         String easyStat;
-        if (avgPoints < 25) {
+        if(avgPoints<=0){
+            setAvg(0);
+            easyStat="Pokemon died";
+            //gameService.doDelete();
+        }
+        else if (avgPoints>0 && avgPoints < 25) {
             easyStat = "Bad";
         } else if (avgPoints > 25 && avgPoints < 50) {
             easyStat = "Not bad";
         } else if (avgPoints >= 50 && avgPoints < 65) {
-            easyStat = "Good";
-        } else {
+            easyStat = "Good";}
+        else {
             easyStat = "Excellent";
         }
         //this.setAvg(avgPoints); //por qué le estamos haciendo un set?

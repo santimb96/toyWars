@@ -36,7 +36,7 @@ import java.util.List;
             GameService gameService = new GameService();
             gameService.initPokemon();
             Pokemon pokemon = new Pokemon();
-            return Pokemon.getPokemonAttribute();
+            return pokemon.getPokemonAttribute();
         }
     /*@GetMapping("/getCurrentStatus")
     public List<Pokemon> getFullStatus(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
