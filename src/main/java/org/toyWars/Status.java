@@ -69,9 +69,9 @@ public class Status {
     public Status() {}
 
     public Status(int hungryPoints, int energyPoints, int healthyPoints) {
-        this.hungryPoints = healthyPoints;
+        this.hungryPoints = hungryPoints;
         this.energyPoints = energyPoints;
-        this.healthyPoints = hungryPoints;
+        this.healthyPoints = healthyPoints;
     }
 
 
