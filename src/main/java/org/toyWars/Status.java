@@ -4,7 +4,7 @@ package org.toyWars;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Status extends Pokemon {
+public class Status {
     private static int hungryPoints;
     private static int energyPoints;
     private static int healthyPoints;
@@ -18,6 +18,8 @@ public class Status extends Pokemon {
     public void setAvg(int avg) {
         this.avg = avg;
     }
+
+    private static ArrayList<Status> status = new ArrayList<>();
 
     public int getHungryPoints() {
         if (this.hungryPoints > 100) {
@@ -54,14 +56,24 @@ public class Status extends Pokemon {
         int hP=getHealthyPoints();
         this.healthyPoints = hP+healthyPoints;
     }
+
+    public static ArrayList<Status> getStatus() {
+        return status;
+    }
+
+    public static void setStatus(ArrayList<Status> status) {
+        Status.status = status;
+    }
+
     //constructor
     public Status() {}
 
     public Status(int hungryPoints, int energyPoints, int healthyPoints) {
-        this.hungryPoints = hungryPoints;
+        this.hungryPoints = healthyPoints;
         this.energyPoints = energyPoints;
-        this.healthyPoints = healthyPoints;
+        this.healthyPoints = hungryPoints;
     }
+
 
     ///MÉTODO EASYSTATUS
     public String getEasyStatus() {
