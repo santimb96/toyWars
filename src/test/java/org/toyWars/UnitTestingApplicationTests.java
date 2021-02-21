@@ -130,4 +130,12 @@ class UnitTestingApplicationTests {
         Assertions.assertNotNull(gameService.getPastActionList());
     }
 
+/*    @Test
+    public void resurrectionConfirmation(){
+        Status status=new Status(0,0,0);
+        GameService gameService = new GameService();
+        gameService.reset();
+        System.out.println(gameService.getPokeCurrentStatus());
+    }*/
+
 }

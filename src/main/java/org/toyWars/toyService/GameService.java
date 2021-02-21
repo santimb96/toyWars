@@ -137,6 +137,11 @@ public class GameService{
             status.setAvg(0,0,0);
             response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
             this.setResponse(response);
+            int input = JOptionPane.showConfirmDialog(null, "Do you want to reset the Pokemon?");// 0=yes, 1=no, 2=cancel
+            if(input==1)
+            {
+                this.reset();
+            }
         } else {
             this.setResponse(response);
         }
