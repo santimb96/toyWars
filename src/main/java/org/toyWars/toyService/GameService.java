@@ -24,6 +24,18 @@ public class GameService{
     private String renderTypeFinal;
     private static List <Actions> actionsList = new ArrayList<>();
 
+    public static List<Actions> getPastActionList() {
+        return pastActionList;
+    }
+
+    public static void setPastActionList(List<Actions> pastActionList) {
+        GameService.pastActionList = pastActionList;
+    }
+
+    private static List <Actions> pastActionList = new ArrayList<>();
+
+    private static List<Object> pokeCurrentStatus = new ArrayList<Object>(); //le vamos a meter los puntos, sus características...
+
     public static List<Actions> getActionsList() {
         return actionsList;
     }
@@ -75,6 +87,17 @@ public class GameService{
         this.currentLifeBeing = currentLifeBeing;
     }
 
+    public void setPokeCurrentStatus() {
+        Pokemon pokemon=new Pokemon();
+        Status status = new Status();
+        this.getPokeCurrentStatus().add(pokemon);
+        this.getPokeCurrentStatus().add(status);
+    }
+
+    public List<Object> getPokeCurrentStatus(){
+        return pokeCurrentStatus;
+    }
+
     /////MÉTODOS
     public void initPokemon(){
         Random random=new Random() ;
@@ -87,46 +110,54 @@ public class GameService{
         pokemon.setName(pokeMonster[position]);
         pokemon.setType(pokeType[position]);
         pokemon.setColor(pokeColor[position]);
-        Pokemon.getPokemonAttribute().add(pokemon);
+        pokemon.getPokemonAttribute().add(pokemon);
+        setPokeCurrentStatus(); //lista de datos
     }
     public void doActions (Actions actions){
         String response="";
         Status status=new Status();
         Pokemon pokemon=new Pokemon();
-            switch (actions) {
-                case EAT:
-                    pokemon.doEat();
-                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
-                    break;
-                case SLEEP:
-                    pokemon.doSleep();
-                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
-                    break;
-                case PLAY:
-                    pokemon.doPlay();
-                    response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
-                    break;
-                default:
-            }
-            if (status.getAvg()<=0){
-                response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
-                this.setResponse(response);
-            } else {
-                this.setResponse(response);
-            }
+        switch (actions) {
+            case EAT:
+                pokemon.doEat();
+                response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
+                break;
+            case SLEEP:
+                pokemon.doSleep();
+                response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
+                break;
+            case PLAY:
+                pokemon.doPlay();
+                response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
+                break;
+            default:
+        }
+        pastActionList.add(actions);
+        if (status.getAvg()<=0){
+            status.setAvg(0,0,0);
+            response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+            this.setResponse(response);
+        } else {
+            this.setResponse(response);
+        }
     }
     //getActions() return!!
     public void listActions(){
         Pokemon pokemon=new Pokemon();
         for (int i = 0; i < Actions.values().length; i++) {
-                pokemon.getCurrentAction().add(Actions.values()[i]);
-             }
+            pokemon.getCurrentAction().add(Actions.values()[i]);
+        }
        /* String values=("Las acciones que puede realizar son: ");
         for (int i = 0; i < Actions.values().length; i++) {
             values += values()[i].name()+ ", ";
             }
         return values;*/
-        }
     }
+
+    public void reset(){
+        getPokeCurrentStatus().clear();
+    }
+
+}
 
 
