@@ -11,6 +11,4 @@ public interface IActions {
     public void doWalk();
     public void doFight();
     public List<Actions> getCurrentAction();
-    //generar una lista de acciones
-    //dame la lista de acciones
 }

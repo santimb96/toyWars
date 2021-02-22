@@ -34,16 +34,6 @@ public class Pokemon extends LifeBeing{
 
     public Pokemon(){}
 
-/*
-    public List<Action> getCurrentAction(){
-        if (status.getCurrentAction().equals(Action.fight)) {
-            //listado de acciones
-            //posibilidades de fight
-            }
-        }*/
-
-    //hacer un switch
-
     public String getName() {
         return name;
     }

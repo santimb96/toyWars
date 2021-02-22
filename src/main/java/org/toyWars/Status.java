@@ -1,4 +1,3 @@
-/*Estado del LifeBeing (bastaría con el número de puntos)*/
 package org.toyWars;
 
 import java.util.ArrayList;

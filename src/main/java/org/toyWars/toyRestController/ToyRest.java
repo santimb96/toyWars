@@ -9,9 +9,6 @@ import org.toyWars.RenderType;
 import org.toyWars.Status;
 import org.toyWars.toyService.GameService;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -73,13 +70,7 @@ public class ToyRest {
             List<Actions> list=gameService.getPastActionList();
             /*int unoMenos=list.size()-1;*/
             for (int i = 0; i < list.size(); i++) {
-/*                if(list.size()==unoMenos){
-                    actions+=list.get(i)+".";
-
-                }*/
-                /*else{*/
                     actions+=list.get(i)+",";
-                /*}*/
             }
             actions+=".";
             return actions;

@@ -18,7 +18,6 @@ import static org.toyWars.Actions.*;
 public class GameService{
     private List <UserAction> userAction;
     private int maxPoints;
-    private Action action;
     private RenderType renderType;
     private String response;
     private String renderTypeFinal;
@@ -77,14 +76,6 @@ public class GameService{
 
     public void setMaxPoints(int maxPoints) {
         this.maxPoints = maxPoints;
-    }
-
-    public String getCurrentLifeBeing() {
-        return currentLifeBeing;
-    }
-
-    public void setCurrentLifeBeing(String currentLifeBeing) {
-        this.currentLifeBeing = currentLifeBeing;
     }
 
     public void setPokeCurrentStatus() {
@@ -189,11 +180,6 @@ public class GameService{
             default:
         }
         pastActionList.add(actions);
-        /*if (status.getAvg() <= 0) {
-            status.setAvg(0, 0, 0);
-            response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
-            this.setResponse(response);
-        }*/
         this.setResponse(response);
     }
     //getActions() return!!
