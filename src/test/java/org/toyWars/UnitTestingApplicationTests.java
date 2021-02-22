@@ -12,20 +12,124 @@ import java.util.List;
 @SpringBootTest
 class UnitTestingApplicationTests {
 
+    //creating the pokemon as our choice
     @Test
     public void Pokemon() {
         Pokemon pokemon=new Pokemon();
-        initPokemon();
+        GameService gameService = new GameService();
+        gameService.initPokemon();
         Assertions.assertEquals(Arrays.asList("Bulbasaur", "Leaf","Green",null), Pokemon.getPokemonAttribute() );
 
     }
+
+    //creating the pokemon with the default values (50,50,50) on initPokemon
     @Test
-    public void doAction(){
-        Status status=new Status(50,50,50);
+    public void initPokemon(){
+        GameService gameService= new GameService();
+        Pokemon pokemon=new Pokemon();
+        Status status=new Status();
+        gameService.initPokemon();
+        pokemon.doEat();
+        Assertions.assertEquals(70, status.getHungryPoints());
+    }
+
+    //TESTING ALL ACTIONS
+    @Test
+    public void doEat(){
+        Status status=new Status();
+        initPokemon();
         GameService gameservice=new GameService();
         gameservice.doActions(Actions.EAT);
-        Assertions.assertEquals("El estado es: Good y su puntuación media es: 56", gameservice.getResponse());
+        String msg="El estado es: "+status.getEasyStatus() +" y su puntuación media es: " + status.getAvg();
+        Assertions.assertEquals(msg, gameservice.getResponse());
     }
+
+    @Test
+    public void doPlay(){
+        Status status=new Status();
+        initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.PLAY);
+        String msg="El estado es: "+status.getEasyStatus() +" y su puntuación media es: " + status.getAvg();
+        Assertions.assertEquals(msg, gameservice.getResponse());
+    }
+
+    @Test
+    public void doWalk(){
+        Status status=new Status();
+        initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.WALK);
+        String msg="El estado es: "+status.getEasyStatus() +" y su puntuación media es: " + status.getAvg();
+        Assertions.assertEquals(msg, gameservice.getResponse());
+    }
+
+    @Test
+    public void doClean(){
+        Status status=new Status();
+        initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.CLEAN);
+        String msg="El estado es: "+status.getEasyStatus() +" y su puntuación media es: " + status.getAvg();
+        Assertions.assertEquals(msg, gameservice.getResponse());
+    }
+
+    @Test
+    public void doSleep(){
+        Status status=new Status();
+        initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.SLEEP);
+        String msg="El estado es: "+status.getEasyStatus() +" y su puntuación media es: " + status.getAvg();
+        Assertions.assertEquals(msg, gameservice.getResponse());
+    }
+
+/*    @Test
+    public void doFight(){
+        Pokemon pokemon = new Pokemon();
+        Status status=new Status();
+        initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.FIGHT);
+        String msg=pokemon.getFightReasonResult()+"El estado es: "+status.getEasyStatus() +" y su puntuación media es: " + status.getAvg();
+        Assertions.assertEquals(msg, gameservice.getResponse());
+    }*/
+
+    @Test
+    public void doDie(){
+        initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.DIE);
+        Assertions.assertEquals("Has asesinado al pokemon. RIP", gameservice.getResponse());
+    }
+
+    //TESTING IF VALUES WHEN DIES IS 0
+    @Test
+    public void doDieValues(){
+        GameService gameService=new GameService();
+        Status status=new Status();
+        gameService.initPokemon();
+        GameService gameservice=new GameService();
+        gameservice.doActions(Actions.DIE);
+        Assertions.assertEquals(0, status.getAvg());
+        Assertions.assertEquals(0, status.getHungryPoints());
+        Assertions.assertEquals(0, status.getEnergyPoints());
+        Assertions.assertEquals(0, status.getHealthyPoints());
+    }
+
+/*    @Test
+    public void doDieMaxPoints(){
+        Status status=new Status();
+        GameService gameService=new GameService();
+        gameService.initPokemon();
+        gameService.doActions(Actions.DIE);
+        Assertions.assertEquals(50, status.getMaxPoints());
+    }*/
+
+
+
+
+
     @Test
     public void pokemonStatusAvg(){
         Status status=new Status(20,50,50);
@@ -57,13 +161,6 @@ class UnitTestingApplicationTests {
     }
 
     @Test
-    public void doEat(){
-        Pokemon pokemon=new Pokemon();
-        Status status=new Status(50,50,50);
-        pokemon.doEat();
-        Assertions.assertEquals(70, status.getHungryPoints());
-    }
-    @Test
     public void doEatAverage(){
         Pokemon pokemon=new Pokemon();
         Status status=new Status(50,50,50);
@@ -81,16 +178,7 @@ class UnitTestingApplicationTests {
         Assertions.assertEquals(average, status.getAvg());
     }
 
-    //trying the default values (50,50,50) on initPokemon
-    @Test
-    public void initPokemon(){
-        GameService gameService= new GameService();
-        Pokemon pokemon=new Pokemon();
-        Status status=new Status();
-        gameService.initPokemon();
-        pokemon.doEat();
-        Assertions.assertEquals(70, status.getHungryPoints());
-    }
+
 
     //me estoy complicando x2
     @Test
@@ -129,13 +217,5 @@ class UnitTestingApplicationTests {
         gameService.doActions(Actions.EAT);
         Assertions.assertNotNull(gameService.getPastActionList());
     }
-
-/*    @Test
-    public void resurrectionConfirmation(){
-        Status status=new Status(0,0,0);
-        GameService gameService = new GameService();
-        gameService.reset();
-        System.out.println(gameService.getPokeCurrentStatus());
-    }*/
 
 }

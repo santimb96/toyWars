@@ -21,12 +21,13 @@ public class Status {
     }
 
     public int getAvg() {
+        int maxPoints=getMaxPoints();
         this.avg =(int)(Math.floor(this.getEnergyPoints() + this.getHungryPoints() + this.getHealthyPoints())/3);
         if (this.avg<=0)
         {
             this.avg=0;
         }
-        if(getMaxPoints()<this.avg)
+        if(maxPoints<this.avg)
         {
             setMaxPoints(this.avg);
         }
@@ -121,7 +122,6 @@ public class Status {
         else {
             easyStat = "Excellent";
         }
-        //this.setAvg(avgPoints); //por qué le estamos haciendo un set?
         return easyStat;
     }
 }

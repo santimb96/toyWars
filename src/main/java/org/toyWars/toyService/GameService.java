@@ -90,6 +90,10 @@ public class GameService{
     public void setPokeCurrentStatus() {
         Pokemon pokemon=new Pokemon();
         Status status = new Status();
+        if(status.getMaxPoints()<status.getAvg())
+        {
+            setMaxPoints(status.getAvg());
+        }
         this.getPokeCurrentStatus().add(pokemon);
         this.getPokeCurrentStatus().add(status);
     }
@@ -113,38 +117,84 @@ public class GameService{
         pokemon.getPokemonAttribute().add(pokemon);
         setPokeCurrentStatus(); //lista de datos
     }
-    public void doActions (Actions actions){
-        String response="";
-        Status status=new Status();
-        Pokemon pokemon=new Pokemon();
+    public void doActions (Actions actions) {
+        String response = "";
+        Status status = new Status();
+        Pokemon pokemon = new Pokemon();
         switch (actions) {
             case EAT:
                 pokemon.doEat();
-                response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
+                if (status.getAvg() <= 0) {
+                    status.setAvg(0, 0, 0);
+                    response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                    this.setResponse(response);
+                }else{
+                    response += "El estado es: " + status.getEasyStatus() + " y su puntuación media es: " + status.getAvg();
+                }
                 break;
             case SLEEP:
                 pokemon.doSleep();
-                response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
+                if (status.getAvg() <= 0) {
+                    status.setAvg(0, 0, 0);
+                    response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                    this.setResponse(response);
+                }else{
+                    response += "El estado es: " + status.getEasyStatus() + " y su puntuación media es: " + status.getAvg();
+                }
+                break;
+            case CLEAN:
+                pokemon.doClean();
+                if (status.getAvg() <= 0) {
+                    status.setAvg(0, 0, 0);
+                    response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                    this.setResponse(response);
+                }else{
+                    response += "El estado es: " + status.getEasyStatus() + " y su puntuación media es: " + status.getAvg();
+                }
+                break;
+            case WALK:
+                pokemon.doWalk();
+                if (status.getAvg() <= 0) {
+                    status.setAvg(0, 0, 0);
+                    response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                    this.setResponse(response);
+                }else{
+                    response += "El estado es: " + status.getEasyStatus() + " y su puntuación media es: " + status.getAvg();
+                }
+                break;
+            case DIE:
+                pokemon.doDie();
+                response = "Has asesinado al pokemon. RIP";
+                break;
+            case FIGHT:
+                pokemon.doFight();
+                if (status.getAvg() <= 0) {
+                    status.setAvg(0, 0, 0);
+                    response = pokemon.getFightReasonResult()+" El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                    this.setResponse(response);
+                }else{
+                    response += pokemon.getFightReasonResult()+"El estado es: " + status.getEasyStatus() + " y su puntuación media es: " + status.getAvg();
+                }
                 break;
             case PLAY:
                 pokemon.doPlay();
-                response += "El estado es: "+status.getEasyStatus()+" y su puntuación media es: "+status.getAvg();
+                if (status.getAvg() <= 0) {
+                    status.setAvg(0, 0, 0);
+                    response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
+                    this.setResponse(response);
+                }else{
+                    response += "El estado es: " + status.getEasyStatus() + " y su puntuación media es: " + status.getAvg();
+                }
                 break;
             default:
         }
         pastActionList.add(actions);
-        if (status.getAvg()<=0){
-            status.setAvg(0,0,0);
+        /*if (status.getAvg() <= 0) {
+            status.setAvg(0, 0, 0);
             response = "El Pokémon ha fallecido porque su estado total es malo y menor o igual a 0. RIP";
             this.setResponse(response);
-            int input = JOptionPane.showConfirmDialog(null, "Do you want to reset the Pokemon?");// 0=yes, 1=no, 2=cancel
-            if(input==1)
-            {
-                this.reset();
-            }
-        } else {
-            this.setResponse(response);
-        }
+        }*/
+        this.setResponse(response);
     }
     //getActions() return!!
     public void listActions(){
@@ -152,11 +202,6 @@ public class GameService{
         for (int i = 0; i < Actions.values().length; i++) {
             pokemon.getCurrentAction().add(Actions.values()[i]);
         }
-       /* String values=("Las acciones que puede realizar son: ");
-        for (int i = 0; i < Actions.values().length; i++) {
-            values += values()[i].name()+ ", ";
-            }
-        return values;*/
     }
 
     public void reset(){

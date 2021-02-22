@@ -9,6 +9,7 @@ import org.toyWars.RenderType;
 import org.toyWars.Status;
 import org.toyWars.toyService.GameService;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,30 +17,17 @@ import java.util.List;
 
 @RestController
 public class ToyRest {
-/*
-        private static final String template = "Hello, %s!";
-        private final AtomicLong counter = new AtomicLon;
-
-        @GetMapping(value = "/get/{IActions}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-            public ResponseEntity<List<RegisterItem>> getRegisterById(@PathVariable IActions uuid) {
-            try {
-                return new ResponseEntity<>(analysisService.getDataRegisterById(uuid), HttpStatus.OK);
-            } catch (Exception e) {
-                log.error("register:get/", e);
-                return new ResponseEntity<List<RegisterItem>>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }*/
-    //prueba REST
 
     @GetMapping("/new")
-    public List<Pokemon> getPokemon( @RequestParam(value = "name", defaultValue = "Pikachu") String name,
+    public Pokemon getPokemon( @RequestParam(value = "name", defaultValue = "Pikachu") String name,
                                      @RequestParam(value = "type", defaultValue = "Electric") String type,
                                      @RequestParam(value = "color", defaultValue = "yellow") String color) {
         GameService gameService = new GameService();
         gameService.reset();
         gameService.initPokemon();
         Pokemon pokemon = new Pokemon();
-        return pokemon.getPokemonAttribute();
+        Pokemon poke=pokemon.getPokemonAttribute().get(0);
+        return poke;
     }
     @GetMapping("/getCurrentStatus")
     public List<Object> getCurrentStatus(@RequestParam(value = "name", defaultValue = "Pikachu") String name,
@@ -79,9 +67,22 @@ public class ToyRest {
     }
 
         @GetMapping("/getStats")
-        public List<Actions> getStats(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
+        public String getStats(@RequestParam(value = "action", defaultValue = "NON ACTION SELECTED") String action) {
             GameService gameService = new GameService();
-            return gameService.getPastActionList();
+            String actions="Las acciones realizadas hasta el momento son: ";
+            List<Actions> list=gameService.getPastActionList();
+            /*int unoMenos=list.size()-1;*/
+            for (int i = 0; i < list.size(); i++) {
+/*                if(list.size()==unoMenos){
+                    actions+=list.get(i)+".";
+
+                }*/
+                /*else{*/
+                    actions+=list.get(i)+",";
+                /*}*/
+            }
+            actions+=".";
+            return actions;
         }
 
 }
